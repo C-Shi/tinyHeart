@@ -5,6 +5,7 @@ var ctx1, ctx2;
 var bgPic = new Image();
 var canWidth;
 var canHeight;
+var ane = new aneObj();
 
 
 function game() {
@@ -19,12 +20,15 @@ function init() {
   ctx2 = can2.getContext('2d')
 
   bgPic.src = 'src/background.jpg'
-  console.log(bgPic)
-  canWidth = can1.width;
-  canHeight = can1.height;
+  canWidth = can2.width;
+  canHeight = can2.height;
+
+  ane.init()
+
 }
 
 function gameLoop() {
   window.requestAnimFrame(gameLoop)
-  drawBackgroud()
+  drawBackgroud();
+  ane.draw();
 }
