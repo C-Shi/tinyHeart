@@ -5,7 +5,8 @@ var fruitObj = function() {
   // this.l is responsible for controlling the fruit change variable
   this.l = [];
   // spd is the random controller for growing and floating speed for each fruit;
-  this.spd = []
+  this.spd = [];
+  this.fruitType = [];
   this.orange = new Image();
   this.blue = new Image();
 }
@@ -43,7 +44,8 @@ fruitObj.prototype.draw = function() {
 
     // locate image position
     // drawImage take 5 argument, pic, x, y, width, height
-    ctx2.drawImage(this.orange, this.x[i] - this.l[i] * 0.5, this.y[i] - this.l[i] * 0.5, this.l[i], this.l[i])
+
+    ctx2.drawImage(this[this.fruitType[i]], this.x[i] - this.l[i] * 0.5, this.y[i] - this.l[i] * 0.5, this.l[i], this.l[i])
 
     // when fruit fly out from screen then deactive this fruit
     if (this.y[i] < 10) {
@@ -60,6 +62,10 @@ fruitObj.prototype.born = function(i) {
   this.y[i] = canHeight - ane.len[aneId]
   this.l[i] = 0
   this.alive[i] = true;
+
+  // whether a new born fruit is blue or orange is totally randomly depends on a random num
+  this.fruitType[i] = Math.random() < 0.3 ? 'blue' : 'orange'
+
 }
 
 function fruitMonitor() {
