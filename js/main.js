@@ -39,5 +39,7 @@ function gameLoop() {
   lastTime = Date.now()
   drawBackgroud();
   ane.draw();
+  fruitMonitor();
   fruit.draw();
+
 }

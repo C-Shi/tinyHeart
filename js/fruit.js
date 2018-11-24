@@ -15,14 +15,12 @@ fruitObj.prototype.num = 30;
 fruitObj.prototype.init = function() {
   for (var i = 0; i < this.num; i++) {
     // for each fruit, set init point
-    this.alive[i] = true;
     this.x[i] = 0;
     this.y[i] = 0;
     // when init fruit class, will create each individual fruit
     this.l[i] = 0
     // initialize a random speed for each fruit
-    this.spd[i] = Math.random() * 0.01 + 0.01
-    this.born(i)
+    this.spd[i] = Math.random() * 0.17 + 0.03
   }
   this.orange.src = 'src/fruit.png';
   this.blue.src = 'src/blue.png';
@@ -32,6 +30,9 @@ fruitObj.prototype.draw = function() {
   for (var i = 0; i < this.num; i++) {
     //draw
     //find ane, grow, fly
+
+    // check if this fruit is not alive then do not proceed
+    if (!this.alive[i]) continue;
 
     // for each load, use random speed to control each fruit
     if (this.l[i] <= 14) {
@@ -43,14 +44,43 @@ fruitObj.prototype.draw = function() {
     // locate image position
     // drawImage take 5 argument, pic, x, y, width, height
     ctx2.drawImage(this.orange, this.x[i] - this.l[i] * 0.5, this.y[i] - this.l[i] * 0.5, this.l[i], this.l[i])
+
+    // when fruit fly out from screen then deactive this fruit
+    if (this.y[i] < 10) {
+      this.alive[i] = false
+    }
   }
 }
 
+// born method control the initalize of fruit
 fruitObj.prototype.born = function(i) {
   // assign random ane for fruit to born at
   var aneId = Math.floor(Math.random() * ane.num);
   this.x[i] = ane.x[aneId];
   this.y[i] = canHeight - ane.len[aneId]
   this.l[i] = 0
+  this.alive[i] = true;
+}
+
+function fruitMonitor() {
+  var activeFruit = 0;
+  for (var i = 0; i < fruit.num; i++) {
+    if (fruit.alive[i]) activeFruit++
+  }
+  if (activeFruit < 15) {
+    sendFruit();
+    return ;
+  }
+}
+
+function sendFruit() {
+  // find and call born method on a fruit that is current inactive
+  for (var i = 0; i < fruit.num; i++ ){
+    if (!fruit.alive[i]) {
+      fruit.born(i);
+      // we only want to pop up fruit one by one
+      return;
+    }
+  }
 }
 
