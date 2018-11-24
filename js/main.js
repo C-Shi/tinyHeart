@@ -7,8 +7,10 @@ var lastTime;
 var deltaTime;
 var canWidth;
 var canHeight;
+var mx, my;
 var ane = new aneObj();
 var fruit = new fruitObj();
+var mom = new momObj()
 
 
 function game() {
@@ -22,6 +24,8 @@ function init() {
   can2 = document.getElementById('canvas2'); // background layer: ane, fruit
   ctx2 = can2.getContext('2d')
 
+  can1.addEventListener('mousemove', onMouseMove)
+
   bgPic.src = 'src/background.jpg'
   canWidth = can2.width;
   canHeight = can2.height;
@@ -29,7 +33,11 @@ function init() {
 
   ane.init()
   fruit.init()
+  mom.init()
 
+  // init mouse position
+  mx = canWidth * 0.5;
+  my = canHeight * 0.5
 }
 
 function gameLoop() {
@@ -42,4 +50,14 @@ function gameLoop() {
   fruitMonitor();
   fruit.draw();
 
+  ctx1.clearRect(0, 0, canWidth, canHeight)
+  mom.draw()
+}
+
+
+function onMouseMove(e) {
+  if (e.offSetX || e.layerX) {
+    mx = e.offSetX || e.layerX;
+    my = e.offSetY || e.layerY;
+  }
 }
