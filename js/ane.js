@@ -21,10 +21,9 @@ aneObj.prototype.draw = function() {
   ctx2.strokeStyle = 'purple';
   // using canvas to draw ane
   for (var i = 0; i < this.num; i++) {
-    console.log(this.x[i], canHeight - this.len[i])
     // init pen
     ctx2.beginPath();
-    // set init point
+    // set init point (start pt, end pt)
     ctx2.moveTo(this.x[i], canHeight);
     // set end point
     ctx2.lineTo(this.x[i], canHeight - this.len[i]);

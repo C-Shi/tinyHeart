@@ -3,9 +3,12 @@ document.body.onload = game;
 var can1, can2;
 var ctx1, ctx2;
 var bgPic = new Image();
+var lastTime;
+var deltaTime;
 var canWidth;
 var canHeight;
 var ane = new aneObj();
+var fruit = new fruitObj();
 
 
 function game() {
@@ -22,13 +25,19 @@ function init() {
   bgPic.src = 'src/background.jpg'
   canWidth = can2.width;
   canHeight = can2.height;
+  lastTime = Date.now()
 
   ane.init()
+  fruit.init()
 
 }
 
 function gameLoop() {
   window.requestAnimFrame(gameLoop)
+  var now = Date.now();
+  deltaTime = now - lastTime;
+  lastTime = Date.now()
   drawBackgroud();
   ane.draw();
+  fruit.draw();
 }
