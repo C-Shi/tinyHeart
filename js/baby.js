@@ -5,6 +5,7 @@ var babyObj = function() {
   this.babyBody = new Image();
   this.babyTailArr = [];
   this.babyEyeArr = [];
+  this.babyBodyArr = []
 
   this.babyTailTimer = 0;
   this.babyTailCount = 0;
@@ -12,6 +13,8 @@ var babyObj = function() {
   this.babyEyeCount = 0;
   // babyEyeInterval determine how long a eye status should proceed
   this.babyEyeInterval = 1000;
+  this.babyBodyTimer = 0;
+  this.babyBodyCount = 0;
 }
 
 babyObj.prototype.init = function() {
@@ -25,15 +28,18 @@ babyObj.prototype.init = function() {
     this.babyTailArr[i].src = 'src/babyTail' + i +'.png';
   }
 
-  this.babyEye.src = 'src/babyEye0.png';
-  this.babyBody.src = 'src/babyFade0.png';
-
   // initalize babyEyeArr for eye animation
   this.babyEyeArr[0] = new Image();
   this.babyEyeArr[1] = new Image();
 
   this.babyEyeArr[0].src = 'src/babyEye0.png';
   this.babyEyeArr[1].src = 'src/babyEye1.png';
+
+  // initalized babyBodyArr
+  for (var i = 0; i < 20; i++) {
+    this.babyBodyArr[i] = new Image();
+    this.babyBodyArr[i].src = 'src/babyFade' + i + '.png'
+  }
 }
 
 babyObj.prototype.draw = function() {
@@ -70,13 +76,26 @@ babyObj.prototype.draw = function() {
   }
 
 
+  // baby body animaition
+  this.babyBodyTimer += deltaTime;
+  if (this.babyBodyTimer > 300) {
+    this.babyBodyCount += 1;
+    this.babyBodyTimer = 0;
+    if (this.babyBodyCount > 19) {
+      this.babyBodyCount = 19;
+      // alert('game over')
+    }
+  }
+
+
+
 
   ctx1.save();
   ctx1.translate(this.x, this.y)
   ctx1.rotate(this.angle)
 
 
-  ctx1.drawImage(this.babyBody, -this.babyBody.width * 0.5, -this.babyBody.height * 0.5);
+  ctx1.drawImage(this.babyBodyArr[this.babyBodyCount], -this.babyBodyArr[this.babyBodyCount].width * 0.5, -this.babyBodyArr[this.babyBodyCount].height * 0.5);
   ctx1.drawImage(this.babyEyeArr[this.babyEyeCount], -this.babyEyeArr[this.babyEyeCount].width * 0.5, -this.babyEyeArr[this.babyEyeCount].height * 0.5);
   ctx1.drawImage(this.babyTailArr[this.babyTailCount], -this.babyTailArr[this.babyTailCount].width * 0.5 + 23, -this.babyTailArr[this.babyTailCount].height * 0.5);
   ctx1.restore();
