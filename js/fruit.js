@@ -54,6 +54,11 @@ fruitObj.prototype.draw = function() {
   }
 }
 
+// deactive fruit when being eaten
+fruitObj.prototype.dead = function(i) {
+  this.alive[i] = false
+}
+
 // born method control the initalize of fruit
 fruitObj.prototype.born = function(i) {
   // assign random ane for fruit to born at

@@ -10,7 +10,8 @@ var canHeight;
 var mx, my;
 var ane = new aneObj();
 var fruit = new fruitObj();
-var mom = new momObj()
+var mom = new momObj();
+var baby = new babyObj();
 
 
 function game() {
@@ -34,16 +35,19 @@ function init() {
   ane.init()
   fruit.init()
   mom.init()
+  baby.init()
 
   // init mouse position
   mx = canWidth * 0.5;
   my = canHeight * 0.5
+
 }
 
 function gameLoop() {
   window.requestAnimFrame(gameLoop)
   var now = Date.now();
   deltaTime = now - lastTime;
+  if (deltaTime > 40) deltaTime = 40;
   lastTime = Date.now()
   drawBackgroud();
   ane.draw();
@@ -51,7 +55,10 @@ function gameLoop() {
   fruit.draw();
 
   ctx1.clearRect(0, 0, canWidth, canHeight)
-  mom.draw()
+  mom.draw();
+  baby.draw();
+
+  momFruitCollision()
 }
 
 
