@@ -12,7 +12,7 @@ var ane = new aneObj();
 var fruit = new fruitObj();
 var mom = new momObj();
 var baby = new babyObj();
-
+var data = new dataObj();
 
 function game() {
   init();
@@ -60,6 +60,8 @@ function gameLoop() {
 
   momFruitCollision();
   momBabyCollision();
+
+  data.draw()
 }
 
 

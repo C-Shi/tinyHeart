@@ -10,6 +10,10 @@ function momFruitCollision() {
         // fruit be eaten
         // do not call fruit.alive[i] = false here, use OOP approach, encapsulate dead method
         fruit.dead(i);
+        data.fruitNum += 1;
+        if(fruit.fruitType[i] === 'blue') {
+          data.double = 2;
+        }
       }
     }
   }
@@ -19,5 +23,7 @@ function momBabyCollision(){
   var l = calLength2(mom.x, mom.y, baby.x, baby.y);
   if (l < 900) {
     baby.babyBodyCount = 0;
+    // data re-zero
+    data.reset();
   }
 }
