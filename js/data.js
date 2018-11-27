@@ -17,3 +17,5 @@ dataObj.prototype.draw = function() {
   ctx1.fillText("Fruit Num: " + this.fruitNum, w * 0.5, h - 50);
   ctx1.fillText("Double: " + this.double, w * 0.5, h - 80);
 }
+
+

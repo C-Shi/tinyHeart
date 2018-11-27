@@ -4,7 +4,6 @@ var momObj = function() {
   this.x;
   this.y;
   this.angle;
-  this.bigEye = new Image();
   this.bigBody = new Image();
 
   this.momTailArr = [];
@@ -15,6 +14,10 @@ var momObj = function() {
   this.momEyeTimer = 0;
   this.momEyeCount = 0;
   this.momEyeInterval = 1000;
+
+  this.momBodyOraArr = [];
+  this.momBodyBluArr = [];
+  this.momBodyCount = 0;
 }
 
 momObj.prototype.init = function() {
@@ -22,8 +25,6 @@ momObj.prototype.init = function() {
   this.x = canWidth * 0.5;
   this.y = canHeight * 0.5;
   this.angle = 0;
-  this.bigEye.src = 'src/bigEye0.png'
-  this.bigBody.src = 'src/bigSwim0.png'
 
   // initalized momTail
   for (var i = 0; i < 8; i++) {
@@ -36,6 +37,15 @@ momObj.prototype.init = function() {
   this.momEyeArr[1] = new Image();
   this.momEyeArr[0].src = 'src/bigEye0.png';
   this.momEyeArr[1].src = 'src/bigEye1.png';
+
+  // initalized momBody
+  for (var i = 0; i < 8; i++) {
+    this.momBodyOraArr[i] = new Image();
+    this.momBodyBluArr[i] = new Image();
+    this.momBodyOraArr[i].src = 'src/bigSwim' + i + '.png';
+    this.momBodyBluArr[i].src = 'src/bigSwimBlue' + i + '.png';
+  }
+
 }
 
 momObj.prototype.draw = function() {
@@ -70,13 +80,21 @@ momObj.prototype.draw = function() {
   }
 
 
+  // start drawing fish
   ctx1.save();
   ctx1.translate(this.x, this.y)
 
   ctx1.rotate(this.angle)
 
   ctx1.drawImage(this.momEyeArr[this.momEyeCount], -this.momEyeArr[this.momEyeCount].width * 0.5, -this.momEyeArr[this.momEyeCount].height * 0.5);
-  ctx1.drawImage(this.bigBody, -this.bigBody.width * 0.5, -this.bigBody.height * 0.5);
+
+
+  if (data.double === 1){
+    ctx1.drawImage(this.momBodyOraArr[this.momBodyCount], -this.momBodyOraArr[this.momBodyCount].width * 0.5, -this.momBodyOraArr[this.momBodyCount].height * 0.5);
+  } else {
+    ctx1.drawImage(this.momBodyBluArr[this.momBodyCount], -this.momBodyBluArr[this.momBodyCount].width * 0.5, -this.momBodyBluArr[this.momBodyCount].height * 0.5);
+  }
+
   ctx1.drawImage(this.momTailArr[this.momTailCount], -this.momTailArr[this.momTailCount].width * 0.5 + 30, -this.momTailArr[this.momTailCount].height * 0.5)
 
   ctx1.restore()
