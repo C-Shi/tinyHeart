@@ -13,6 +13,8 @@ var fruit = new fruitObj();
 var mom = new momObj();
 var baby = new babyObj();
 var data = new dataObj();
+var wave = new waveObj();
+var halo = new haloObj();
 
 function game() {
   init();
@@ -36,6 +38,8 @@ function init() {
   fruit.init()
   mom.init()
   baby.init()
+  wave.init()
+  halo.init()
 
   // init mouse position
   mx = canWidth * 0.5;
@@ -62,10 +66,14 @@ function gameLoop() {
   momBabyCollision();
 
   data.draw()
+  wave.draw()
+  halo.draw()
 }
 
 
 function onMouseMove(e) {
+  if (data.gameOver) return;
+
   if (e.offSetX || e.layerX) {
     mx = e.offSetX || e.layerX;
     my = e.offSetY || e.layerY;

@@ -86,14 +86,13 @@ momObj.prototype.draw = function() {
 
   ctx1.rotate(this.angle)
 
-  ctx1.drawImage(this.momEyeArr[this.momEyeCount], -this.momEyeArr[this.momEyeCount].width * 0.5, -this.momEyeArr[this.momEyeCount].height * 0.5);
-
-
   if (data.double === 1){
     ctx1.drawImage(this.momBodyOraArr[this.momBodyCount], -this.momBodyOraArr[this.momBodyCount].width * 0.5, -this.momBodyOraArr[this.momBodyCount].height * 0.5);
   } else {
     ctx1.drawImage(this.momBodyBluArr[this.momBodyCount], -this.momBodyBluArr[this.momBodyCount].width * 0.5, -this.momBodyBluArr[this.momBodyCount].height * 0.5);
   }
+
+  ctx1.drawImage(this.momEyeArr[this.momEyeCount], -this.momEyeArr[this.momEyeCount].width * 0.5, -this.momEyeArr[this.momEyeCount].height * 0.5);
 
   ctx1.drawImage(this.momTailArr[this.momTailCount], -this.momTailArr[this.momTailCount].width * 0.5 + 30, -this.momTailArr[this.momTailCount].height * 0.5)
 

@@ -63,13 +63,13 @@ fruitObj.prototype.dead = function(i) {
 fruitObj.prototype.born = function(i) {
   // assign random ane for fruit to born at
   var aneId = Math.floor(Math.random() * ane.num);
-  this.x[i] = ane.x[aneId];
-  this.y[i] = canHeight - ane.len[aneId]
+  this.x[i] = ane.headx[aneId];
+  this.y[i] = ane.heady[aneId]
   this.l[i] = 0
   this.alive[i] = true;
 
   // whether a new born fruit is blue or orange is totally randomly depends on a random num
-  this.fruitType[i] = Math.random() < 0.3 ? 'blue' : 'orange'
+  this.fruitType[i] = Math.random() < 0.1 ? 'blue' : 'orange'
 
 }
 
