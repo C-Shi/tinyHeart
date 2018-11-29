@@ -1,4 +1,4 @@
-document.body.onload = game;
+document.body.onload = control;
 
 var can1, can2;
 var ctx1, ctx2;
@@ -16,6 +16,16 @@ var data = new dataObj();
 var wave = new waveObj();
 var halo = new haloObj();
 var dust = new dustObj();
+
+function control() {
+  var start = document.getElementById('start');
+  start.addEventListener('click', function() {
+    var control = document.getElementsByClassName('control')[0]
+    document.body.removeChild(control)
+    console.log('hit')
+    game()
+  })
+}
 
 function game() {
   init();

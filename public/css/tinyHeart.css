@@ -1,0 +1,68 @@
+body {
+  padding-top: 10px;
+}
+
+.control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 3
+}
+
+.control .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.all_bg {
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+#allCanvas {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  margin: 0;
+}
+
+#canvas1, #canvas2 {
+  position:absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#canvas1 {
+  z-index: 1;
+}
+
+#canvas2 {
+  z-index: 0;
+}
+
+#start {
+  font-size: 5em;
+  padding: 4px 50px;
+  background: transparent;
+  position: absolute;
+  z-index: 3;
+  top: 20vh;
+  left: 30vw;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 10px;
+  transition: background-color .5s;
+}
+
+#start:hover {
+  background-color:#111;
+  cursor: pointer;
+}
