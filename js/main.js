@@ -15,6 +15,7 @@ var baby = new babyObj();
 var data = new dataObj();
 var wave = new waveObj();
 var halo = new haloObj();
+var dust = new dustObj();
 
 function game() {
   init();
@@ -40,6 +41,7 @@ function init() {
   baby.init()
   wave.init()
   halo.init()
+  dust.init();
 
   // init mouse position
   mx = canWidth * 0.5;
@@ -68,6 +70,7 @@ function gameLoop() {
   data.draw()
   wave.draw()
   halo.draw()
+  dust.draw();
 }
 
 
