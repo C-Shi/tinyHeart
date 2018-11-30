@@ -1,6 +1,8 @@
 # TinyHeart Mini Game
 This is a tiny browser game developed using HTML Canvas and front-end javascript. The game is mounted on NodeJS. Player will be able to play this real-time mini game in broswers
 
+This mini browser game is now live on [heroku](http://tinyheart.herokuapp.com)
+
 ## User Story
  - As a player, you move your mouse across the gaming area to direct the movement of the big fish
  - Your job is to collect as mush fruits as possible on big fish and pass them to 'feed' baby fish
